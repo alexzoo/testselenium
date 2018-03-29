@@ -1,6 +1,5 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
@@ -16,18 +15,23 @@ public class MainClass {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
 
-        driver.get("https://en.wikipedia.org");
+        driver.get("https://market.yandex.ru");
 
-        WebElement link = driver.findElement(By.linkText("Log in"));
-        WebElement link2 = driver.findElement(By.partialLinkText("Donate"));
-        WebElement searchField = driver.findElement(By.name("search"));
-        WebElement searchButton = driver.findElement(By.className("searchButton"));
-        WebElement li = driver.findElement(By.id("ca-viewsource"));
-        WebElement input = driver.findElement(By.tagName("input"));
-        WebElement logo = driver.findElement(By.xpath("//a[@class='mw-wiki-logo']"));
+        driver.findElement(By.xpath("//a[@class=\"link topmenu__link\" and text()='Бытовая техника']")).click();
+        driver.findElement(By.xpath("//div[a[text()='Техника для дома']]/div/a[text()='Стиральные машины']")).click();
 
+        System.out.println(driver.findElement(By.xpath("//span[text()='ATLANT']")).isSelected());
 
-        driver.quit();
+        driver.findElement(By.xpath("//span[text()='ATLANT']")).click();
+        driver.findElement(By.xpath("//span[text()='Самовывоз']")).click();
 
+        System.out.println(driver.findElement(By.xpath("//span[text()='ATLANT']")).isSelected());
+        System.out.println(driver.findElement(By.xpath("//span[text()='Самовывоз']")).isSelected());
+        //driver.quit();
+
+    }
+
+    public static void selectRadioButton(String name){
+        
     }
 }
