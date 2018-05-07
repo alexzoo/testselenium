@@ -11,6 +11,8 @@ public class MainClass {
 
     public static void main(String[] args) {
 
+        System.setProperty("webdriver.chrome.driver", "/Users/alexzoo/Documents/projects/testselenium/drivers/chromedriver 2");
+
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
