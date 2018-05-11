@@ -1,5 +1,6 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
@@ -15,26 +16,29 @@ public class MainClass {
 
         WebDriver driver = new ChromeDriver();
 
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().window().maximize();
 
-        driver.get("https://market.yandex.ru");
+        driver.get("https://www.w3schools.com/html/html_tables.asp");
 
-        driver.findElement(By.xpath("//a[@class=\"link topmenu__link\" and text()='Бытовая техника']")).click();
-        driver.findElement(By.xpath("//div[a[text()='Техника для дома']]/div/a[text()='Стиральные машины']")).click();
+        WebElement tableElement = driver.findElement(By.xpath("//table[@id=\"customers\"]"));
 
-        System.out.println(driver.findElement(By.xpath("//span[text()='ATLANT']")).isSelected());
+        Table table = new Table(tableElement, driver);
 
-        driver.findElement(By.xpath("//span[text()='ATLANT']")).click();
-        driver.findElement(By.xpath("//span[text()='Самовывоз']")).click();
+        System.out.println("Rows number is: " + table.getRowsWithColumns());
+        System.out.println(table.getValueFromCell(2,3));
+        System.out.println(table.getValueFromCell(4,"Company"));
+        System.out.println(table.getValueFromCell(2,"Contact"));
 
-        System.out.println(driver.findElement(By.xpath("//span[text()='ATLANT']")).isSelected());
-        System.out.println(driver.findElement(By.xpath("//span[text()='Самовывоз']")).isSelected());
+
+
+
+
+
+
+
         //driver.quit();
 
     }
 
-    public static void selectRadioButton(String name){
-        
-    }
 }
