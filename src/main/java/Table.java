@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Table {
     private WebElement tableElement;
@@ -15,8 +16,14 @@ public class Table {
         this.driver = driver;
     }
 
+    public List<WebElement> getRows(){
+        List<WebElement> rows = tableElement.findElements(By.xpath(".//tr"));
+        rows.remove(0);
+        return rows;
+    }
+
     public List<WebElement> getHeadings(){
-        List<WebElement> headingsRows = tableElement.findElements(By.xpath(".//tr[1]"));
+        WebElement headingsRow = tableElement.findElement(By.xpath(".//tr[1]"));
         List<WebElement> headingColumns = headingsRow.findElements(By.xpath(".//th"));
         return headingColumns;
     }

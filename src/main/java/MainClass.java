@@ -25,7 +25,7 @@ public class MainClass {
 
         Table table = new Table(tableElement, driver);
 
-        System.out.println("Rows number is: " + table.getRowsWithColumns());
+        System.out.println("Rows number is: " + table.getRows().size());
         System.out.println(table.getValueFromCell(2,3));
         System.out.println(table.getValueFromCell(4,"Company"));
         System.out.println(table.getValueFromCell(2,"Contact"));
