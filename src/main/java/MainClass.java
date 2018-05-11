@@ -2,8 +2,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Created by itdev4 on 27.03.2018.
@@ -16,10 +16,14 @@ public class MainClass {
 
         WebDriver driver = new ChromeDriver();
 
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().window().maximize();
 
         driver.get("https://www.w3schools.com/html/html_tables.asp");
+
+        WebDriverWait wait = (new WebDriverWait(driver, 5));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h1[contains(text(), 'HTML')]")));
+
 
         WebElement tableElement = driver.findElement(By.xpath("//table[@id=\"customers\"]"));
 
@@ -30,14 +34,7 @@ public class MainClass {
         System.out.println(table.getValueFromCell(4,"Company"));
         System.out.println(table.getValueFromCell(2,"Contact"));
 
-
-
-
-
-
-
-
-        //driver.quit();
+        driver.quit();
 
     }
 
